@@ -57,4 +57,4 @@ if __name__ == '__main__':
         except Exception as e:
             print('Failed to load extension {}\n{}: {}'.format(extension, type(e).__name__, e))
 
-    bot.run('NTQ3NDQ0MjI0NjczNzEwMDg5.D022zA.yYENTqRJtr4cNtu6gcACgdJRPkQ')
+    bot.run(sys.arg[1])
