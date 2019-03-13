@@ -32,6 +32,7 @@ class UserCommands:
             await self.bot.delete_message(message)
             if not hex:
                 await self.bot.say("You need to include a colour code, ie #00ff00", delete_after=15)
+                return
             if "#" in hex:
                 hex = hex.replace("#", "")
             hex = int(hex, 16)
