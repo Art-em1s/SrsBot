@@ -41,7 +41,7 @@ class UserCommands:
                 await self.bot.edit_role(ctx.message.server, role, name=message.author.id, color=discord.Colour(value=hex))
                 await self.bot.add_roles(ctx.message.author, role)
             else:
-                await self.bot.edit_role(server, majin, color=discord.Colour(value=hex))
+                await self.bot.edit_role(server, role, color=discord.Colour(value=hex))
             await self.bot.say("Your colour has been updated.", delete_after=15)
         except Exception as e:
             print("{}\n{}\n{}\n{}".format(message.content,message.author,e,traceback.format_exc()))
