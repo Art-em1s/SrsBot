@@ -6,7 +6,7 @@ import traceback
 import random
 from discord.ext import commands
 from bot import initial_extensions as cogs
-from .utils import checks
+from .utils import checks, logger
 
 
 class Admin:
@@ -15,7 +15,6 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
 
-    @checks.is_owner()
     @commands.command(name='rl', pass_context=True)
     async def _reload(self, ctx):
         """Reloads all extentions. - Art only"""
@@ -30,13 +29,12 @@ class Admin:
                 except Exception as e:
                     msg+="[x] {} - {}\n".format(cog[4:], e)
                 else:
-                    msg+="[✓] {}\n".format(cog[4:])
                     i+=1
             embed=discord.Embed(description="{}".format(msg), color=random.randint(0, 0xFFFFFF))
             embed.set_footer(text="{} cogs reloaded successfully.".format(i))
             await self.bot.say(embed=embed, delete_after=15)
         except Exception as e:
-            print("{}\n{}\n{}\n{}".format(message.content,message.author,e,traceback.format_exc()))
+            await logger.errorLog(ctx.message.content,ctx.message.author,e,traceback.format_exc())
                 
 def setup(bot):
     bot.add_cog(Admin(bot))
