@@ -21,6 +21,9 @@ bot = commands.Bot(command_prefix=prefix, description=description, no_pm=True, p
 # Cogs addition
 initial_extensions = [
     'ext.admin',
+    'ext.orange',
+    'ext.quoter',
+    'ext.reddit',
     'ext.usercmds'
 ]
 
